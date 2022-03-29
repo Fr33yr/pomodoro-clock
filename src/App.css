@@ -1,10 +1,17 @@
-body {
+body, html {
+  height: 100%;
   margin: 0;
+  background: #1D1A31;
+  color: #F0EDEE;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root{
+  height: 100%;
 }
 
 code {
@@ -13,11 +20,33 @@ code {
 }
 
 .timeset-container{
+  margin-top: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  font-size: 1.2rem;
+}
+
+.time-sets{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.time-sets button{
+  padding: .5em 1em;
+  margin: 0 2em 0 2em;
+  border: 0;
+  border-radius: 2px;
+  background: rgb(200, 231, 25);
+}
+
+.time-sets h3{
+  margin-bottom: .8em;
 }
 
 .clock-container{
@@ -28,5 +57,33 @@ code {
 }
 
 .reset{
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 2em;
   margin-left: 1em;
+  padding: .5em 1em;
+  border: 0;
+  border-radius: 2px;
+}
+
+.start{
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 2em;
+  margin-left: -3em;
+  padding: .5em 1em;
+  border: 0;
+  border-radius: 2px;
+}
+
+footer{
+  margin-top: 25vh;
+  display: flex;
+  justify-content: center;
+}
+
+a{
+  color: #E3D7FF;
+  font-size: 1.5rem;
+  text-decoration: none;
 }

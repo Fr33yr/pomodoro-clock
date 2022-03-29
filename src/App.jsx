@@ -98,6 +98,8 @@ function App() {
           <button className="reset" onClick={()=>resetTime()} style={{background: "lightblue"}}>Reset</button>
         </div>
       </div>
+
+      <footer><a href="https://github.com/Fr33yr/pomodoro-clock" target={"_blank"} rel="noreferrer">Code</a></footer>
     </Fragment>
   );
 }
@@ -111,9 +113,9 @@ function Lenght({title, changeTime, type, time, formatTime}){
       <div>
         <h3>{title}</h3>
         <div className="time-sets">
-          <button className="up" onClick={()=> changeTime(60, type)}>Up</button>
+          <button className="up" onClick={()=> changeTime(60, type)}><i class="fa-solid fa-chevron-up"></i></button>
           <h3>{formatTime(time)}</h3>
-          <button className="down" onClick={()=> changeTime(-60, type)}>Down</button>
+          <button className="down" onClick={()=> changeTime(-60, type)}><i class="fa-solid fa-chevron-down"></i></button>
         </div>
       </div>
     </Fragment>
