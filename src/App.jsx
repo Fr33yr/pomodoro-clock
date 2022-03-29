@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
 
-  const [displayTime, setDisplayTime] = useState(25*60);
-  const [sessionTime, setSessionTime] = useState(25*60);
+  const [displayTime, setDisplayTime] = useState(25*60); // display time
+  const [sessionTime, setSessionTime] = useState(25*60); // session time
   const [breakTime, setBreakTime] = useState(5*60);
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
@@ -51,13 +51,13 @@ function App() {
           setDisplayTime(prev => {
               if(prev <= 0 && !onBrakeVariable){
                 playAudioBreakSound();
-                onBrakeVariable=true;
-                setOnBreak(true);
+                onBrakeVariable=false;
+                setOnBreak(false);
                 return breakTime;
               } else if(prev <= 0 && onBrakeVariable){
                 playAudioBreakSound();
-                onBrakeVariable=false;
-                setOnBreak(false);
+                onBrakeVariable=true;
+                setOnBreak(true);
                 return sessionTime;
               }
             return prev - 1;
@@ -72,7 +72,6 @@ function App() {
       clearInterval(localStorage.getItem('interval-id'))
     }
     setTimerOn(!timerOn);
-    console.log("click");
   }
 
   const resetTime = () =>{
@@ -91,7 +90,7 @@ function App() {
 
       <div className="clock-container">
         <h1>Pomodoro clock</h1>
-        <h2>{onBreak ? "Break" : "Session"}</h2>
+        <h2>{onBreak? "Break" : "Session"}</h2>
         <h1>{formatTime(displayTime)}</h1>
         <div className="btns">
           <button className="start" onClick={()=>controlTime()} style={timerOn ? {background: "yellow"} : {background: "orange"}}>Play/Pause</button>
@@ -113,9 +112,9 @@ function Lenght({title, changeTime, type, time, formatTime}){
       <div>
         <h3>{title}</h3>
         <div className="time-sets">
-          <button className="up" onClick={()=> changeTime(60, type)}><i class="fa-solid fa-chevron-up"></i></button>
+          <button className="up" onClick={()=> changeTime(60, type)}><i className="fa-solid fa-chevron-up"></i></button>
           <h3>{formatTime(time)}</h3>
-          <button className="down" onClick={()=> changeTime(-60, type)}><i class="fa-solid fa-chevron-down"></i></button>
+          <button className="down" onClick={()=> changeTime(-60, type)}><i className="fa-solid fa-chevron-down"></i></button>
         </div>
       </div>
     </Fragment>
