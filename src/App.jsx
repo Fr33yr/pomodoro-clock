@@ -1,4 +1,5 @@
 import React,{ Fragment, useState } from 'react';
+import song from './audio/breaksfx.mp3'
 import './App.css';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   const [breakTime, setBreakTime] = useState(5*60);
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
-  const [breakAudio, setBreakAudio] = useState(new Audio('./audio/breaksfx.mp3'));
+  const [breakAudio, setBreakAudio] = useState(new Audio(song));
+  
 
   const playAudioBreakSound = () =>{
     breakAudio.currentTime = 0;
