@@ -10,7 +10,7 @@ function App() {
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
   const [breakAudio, setBreakAudio] = useState(new Audio(song));
-  
+
 
   const playAudioBreakSound = () =>{
     breakAudio.currentTime = 0;
@@ -55,10 +55,9 @@ function App() {
                 setOnBreak(!onBreak);
                 return breakTime;
               } else if(prev <= 0 && onBreak){
-                playAudioBreakSound();
                 setOnBreak(onBreak);
                 return sessionTime;
-              }
+              } 
               return prev - 1;
           });
           nextDate += second;
