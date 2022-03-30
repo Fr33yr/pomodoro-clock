@@ -4,9 +4,9 @@ import './App.css';
 
 function App() {
 
-  const [displayTime, setDisplayTime] = useState(25*60); // display time
-  const [sessionTime, setSessionTime] = useState(25*60); // session time
-  const [breakTime, setBreakTime] = useState(5*60);
+  const [displayTime, setDisplayTime] = useState(5); // display time
+  const [sessionTime, setSessionTime] = useState(5); // session time
+  const [breakTime, setBreakTime] = useState(4);
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
   const [breakAudio, setBreakAudio] = useState(new Audio(song));
@@ -28,12 +28,12 @@ function App() {
       if(breakTime <= 60 && amount < 0){
         return;
       }
-      setBreakTime(prev => prev + amount)
+      setBreakTime((prev) => prev + amount)
     } else {
       if(sessionTime <= 60 && amount < 0){
         return;
       }
-      setSessionTime(prev => prev + amount)
+      setSessionTime((prev) => prev + amount)
       if(!timerOn){
         setDisplayTime(sessionTime + amount);
       }
@@ -44,37 +44,34 @@ function App() {
     let second = 1000;
     let date = new Date().getTime();
     let nextDate = new Date().getTime() + second;
-    let onBrakeVariable = onBreak;
 
     if(!timerOn){
       let interval = setInterval(()=>{
         date = new Date().getTime();
         if(date > nextDate){
-          setDisplayTime(prev => {
-              if(prev <= 0 && !onBrakeVariable){
+          setDisplayTime((prev) => {
+              if(prev <= 0 && !onBreak){
                 playAudioBreakSound();
-                onBrakeVariable=false;
-                setOnBreak(false);
+                setOnBreak(!onBreak);
                 return breakTime;
-              } else if(prev <= 0 && onBrakeVariable){
+              } else if(prev <= 0 && onBreak){
                 playAudioBreakSound();
-                onBrakeVariable=true;
-                setOnBreak(true);
+                setOnBreak(onBreak);
                 return sessionTime;
               }
-            return prev - 1;
+              return prev - 1;
           });
           nextDate += second;
         }
-      }, 30)
+      }, 30);
       localStorage.clear();
-      localStorage.setItem('interval-id', interval)
+      localStorage.setItem('interval-id', interval);
     }
     if(timerOn){
       clearInterval(localStorage.getItem('interval-id'))
     }
     setTimerOn(!timerOn);
-  }
+  };
 
   const resetTime = () =>{
     setDisplayTime(25*60);
