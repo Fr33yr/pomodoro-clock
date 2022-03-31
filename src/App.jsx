@@ -47,17 +47,23 @@ function App() {
 
     if(!timerOn){
       let interval = setInterval(()=>{
+
         date = new Date().getTime();
+        
         if(date > nextDate){
           setDisplayTime((prev) => {
+
               if(prev <= 0 && !onBreak){
                 playAudioBreakSound();
                 setOnBreak(!onBreak);
                 return breakTime;
-              } else if(prev <= 0 && onBreak){
+              }
+
+               else if(prev <= 0 && onBreak){
                 setOnBreak(onBreak);
                 return sessionTime;
               } 
+
               return (prev - 1);
           });
           nextDate += second;
