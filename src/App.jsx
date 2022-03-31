@@ -4,9 +4,9 @@ import './App.css';
 
 function App() {
 
-  const [displayTime, setDisplayTime] = useState(5); // display time
-  const [sessionTime, setSessionTime] = useState(5); // session time
-  const [breakTime, setBreakTime] = useState(4);
+  const [displayTime, setDisplayTime] = useState(25*60); // display time
+  const [sessionTime, setSessionTime] = useState(25*60); // session time
+  const [breakTime, setBreakTime] = useState(5*60);
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
   const [breakAudio, setBreakAudio] = useState(new Audio(song));
@@ -60,6 +60,7 @@ function App() {
               }
 
                else if(prev <= 0 && onBreak){
+                playAudioBreakSound();
                 setOnBreak(onBreak);
                 return sessionTime;
               } 
