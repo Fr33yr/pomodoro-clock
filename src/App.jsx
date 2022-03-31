@@ -58,7 +58,7 @@ function App() {
                 setOnBreak(onBreak);
                 return sessionTime;
               } 
-              return prev - 1;
+              return (prev - 1);
           });
           nextDate += second;
         }
@@ -92,7 +92,7 @@ function App() {
         <h1>{formatTime(displayTime)}</h1>
         <div className="btns">
           <button className="start" onClick={()=>controlTime()} style={timerOn ? {background: "yellow"} : {background: "orange"}}>Play/Pause</button>
-          <button className="reset" onClick={()=>resetTime()} style={{background: "lightblue"}}>Reset</button>
+          <button className="reset" onClick={()=> resetTime()} style={{background: "lightblue"}}>Reset</button>
         </div>
       </div>
 
